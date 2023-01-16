@@ -57,6 +57,72 @@ print(d1.strftime("%d(%a) %B %Y"))
 
 
 
+date_str_1 = '3 March 1995'
+date_str_2 = '3/9/1995'
+date_str_3 = '21-07-2021'
+d1 = datetime.datetime.strptime(date_str_1, "%d %B %Y")
+d2 = datetime.datetime.strptime(date_str_2, "%d/%m/%Y")
+d3 = datetime.datetime.strptime(date_str_3, "%d-%m-%Y")
+
+print(d1)
+print(d2)
+print(d3)
 
 
 
+d1 = datetime.date.today()
+d2 = datetime.date(d1.year, 12, 31)
+print(f"Number of days until the end of the year: {(d2-d1).days}")
+
+
+
+d1 = datetime.datetime.now()
+d2 = datetime.datetime(d1.year, 12, 31)
+print(f"Until the end of the year: {(d2-d1)}")
+
+
+
+d1 = datetime.datetime(2020, 1, 1)
+print(d1 + datetime.timedelta(days = 7))
+print(d1 + datetime.timedelta(days = 30))
+print(d1 + datetime.timedelta(hours = 30))
+print(d1 + datetime.timedelta(minutes = 15))
+
+
+
+dates = []
+start_date = datetime.datetime(2020, 1, 1)
+dates.append(start_date)
+for index in range(12):
+    print(dates[index])
+    dates.append(dates[-1] + datetime.timedelta(hours = 8))
+
+    
+
+
+d1 = datetime.date(2021,7,1)
+d2 = datetime.date(2021,12,31)
+days_from = d2-d1
+rate = 0.04
+pv = 1000
+print(days_from.days)
+annual_converted = rate / days_from.days
+
+value = pv * (1 + annual_converted) ** days_from.days
+print(value)
+
+
+
+
+
+d1 = datetime.date(2021,7,1)
+d2 = datetime.date(2021,12,31)
+days_from = d2-d1
+rate = 0.04
+pv = 1000
+daily_rate = 0.04 / 365
+
+
+for days in range (days_from.days):
+    pv = pv + pv * daily_rate
+print("Future value: $ %.2f" % pv)
